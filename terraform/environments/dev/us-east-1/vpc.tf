@@ -20,13 +20,13 @@ module "workspaces_vpc" {
       cidr   = var.vpc_cidr_block
       region = var.region
     }
-    var.vpc_availability_zone_1 = {
+    us-east-1c = {
       cidr_public     = var.public_az_1_subnet_cidr_blocks
       cidr_private    = var.private_az_1_subnet_cidr_blocks
       cidr_workspaces = var.workspace_az_1_subnet_cidr_blocks
       cidr_data       = var.data_az_1_subnet_cidr_blocks
     }
-    var.vpc_availability_zone_2 = {
+    us-east-1d = {
       cidr_public     = var.public_az_2_subnet_cidr_blocks
       cidr_private    = var.private_az_2_subnet_cidr_blocks
       cidr_workspaces = var.workspace_az_2_subnet_cidr_blocks

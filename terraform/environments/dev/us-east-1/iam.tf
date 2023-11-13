@@ -4,6 +4,6 @@
 
 ##### IAM Module #####
 
-module "iam" {
+module "iam_general" {
     source = "../../../modules/iam/general"
 }

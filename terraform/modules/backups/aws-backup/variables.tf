@@ -92,16 +92,22 @@ variable "backup_tag_key" {
 variable "opt_in_services" {
   description  = "Map of services to opt in to AWS Backup"
   default     = {
-    "DynamoDB"        = true
-    "Aurora"          = true
-    "Neptune"         = true
-    "EBS"             = true
-    "EC2"             = true
-    "EFS"             = true
-    "FSx"             = true
-    "RDS"             = true
-    "Storage Gateway" = true
-    "DocumentDB"      = true
+    "DynamoDB"               = true
+    "Aurora"                 = true
+    "Neptune"                = true
+    "EBS"                    = true
+    "EC2"                    = true
+    "EFS"                    = true
+    "FSx"                    = true
+    "RDS"                    = true
+    "Storage Gateway"        = true
+    "DocumentDB"             = true
+    "Redshift"               = true
+    "S3"                     = true
+    "SAP HANA on Amazon EC2" = true
+    "CloudFormation"         = true
+    "VirtualMachine"         = true
+    "Timestream"             = true
   }
   type        = map
 }
