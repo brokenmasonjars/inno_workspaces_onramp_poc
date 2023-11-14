@@ -19,15 +19,24 @@ resource "aws_directory_service_directory" "workspaces_mad" {
 
 ##### AD Connector ######
 
+data "aws_secretsmanager_secret" "ad_connector_credentials" {
+  name = var.ad_connector_secrets_manager_secret_name
+}
+
+data "aws_secretsmanager_secret_version" "ad_connector_credentials_version" {
+  secret_id = data.aws_secretsmanager_secret.ad_connector_credentials.id
+}
+
 resource "aws_directory_service_directory" "workspaces_ad_connector" {
-  name     = "corp.notexample.com"
-  password = "SuperSecretPassw0rd"
+  name     = var.ad_connector_name
+  password = jsondecode(data.aws_secretsmanager_secret_version.ad_connector_credentials_version.secret_string)["password"]
   size     = var.ad_connector_size
-  type     = "ADConnector"
+  type     = var.ad_connector_type
 
   connect_settings {
-    customer_dns_ips  = ["A.B.C.D"]
-    customer_username = "Admin"
+    customer_dns_ips  = var.ad_connector_customer_dns_ips
+    customer_username = jsondecode(data.aws_secretsmanager_secret_version.ad_connector_credentials_version.secret_string)["username"]
     subnet_ids        = [module.workspaces_vpc.private_subnet_ids["us-east-1c"], module.workspaces_vpc.private_subnet_ids["us-east-1d"]]
     vpc_id            = module.workspaces_vpc.id
   }
+}

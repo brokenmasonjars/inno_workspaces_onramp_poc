@@ -201,3 +201,8 @@ variable "mad_secrets_manager_secret_name" {
   description = "The name of the Secrets Manager secret for the Managed Active Directory"
   type        = string
 }
+
+variable "ad_connector_secrets_manager_secret_name" {
+  description = "The name of the Secrets Manager secret for the AD Connector"
+  type        = string
+}
