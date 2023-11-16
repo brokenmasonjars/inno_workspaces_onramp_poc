@@ -39,3 +39,20 @@ resource "aws_secretsmanager_secret_version" "ad_connector_credentials" {
   }
   EOF
 }
+
+########## FSx Self-Managed AD Secrets ##########
+
+
+resource "aws_secretsmanager_secret" "fsx_self_managed_ad" {
+  name = var.fsx_self_managed_ad_secrets_manager_secret_name
+}
+
+resource "aws_secretsmanager_secret_version" "fsx_self_managed_ad" {
+  secret_id     = aws_secretsmanager_secret.fsx_self_managed_ad.id
+  secret_string = <<EOF
+  {
+  "username": "svc_fsx",
+  "password": ""
+  }
+  EOF
+}

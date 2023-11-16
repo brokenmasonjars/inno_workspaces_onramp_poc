@@ -210,6 +210,10 @@ variable "ad_connector_secrets_manager_secret_name" {
   type        = string
 }
 
+variable "fsx_self_managed_ad_secrets_manager_secret_name" {
+  description = "The name of the Secrets Manager secret for the FSx for Windows file system"
+  type        = string
+}
 
 ################################
 ########## Workspaces ##########
@@ -284,6 +288,11 @@ variable "workspaces_access_properties_device_type_windows" {
   type        = string
 }
 
+variable "workspaces_access_properties_devices_type_zeroclient" {
+  description = "The device type for Zero Client"
+  type        = string
+}
+
 ##### Workspace Creation Properties #####
 
 variable "workspaces_creation_properties_default_ou" {
@@ -306,3 +315,31 @@ variable "workspaces_creation_properties_user_enabled_as_local_administrator" {
   type        = bool
 }
 
+###################################
+########## FSx Variables ##########
+###################################
+
+variable "fsx_storage_capacity" {
+  description = "The storage capacity for FSx"
+  type        = number
+}
+
+variable "fsx_throughput_capacity" {
+  description = "The throughput capacity for FSx"
+  type        = number
+}
+
+variable "fsx_deployment_type" {
+  description = "The deployment type for FSx"
+  type        = string
+}
+
+variable "fsx_name" {
+  description = "The name for FSx"
+  type        = string
+}
+
+# variable "fsx_aliases"" {
+#   description = "The aliases for FSx"
+#   type        = list(string)
+# }
