@@ -284,5 +284,25 @@ variable "workspaces_access_properties_device_type_windows" {
   type        = string
 }
 
+##### Workspace Creation Properties #####
 
+variable "workspaces_creation_properties_default_ou" {
+  description = "The default OU for WorkSpaces"
+  type        = string
+}
+
+variable "workspaces_creation_properties_enable_internet_access" {
+  description = "Whether or not to enable internet access for WorkSpaces"
+  type        = bool
+}
+
+variable "workspaces_creation_properties_enable_maintenance_mode" {
+  description = "Whether or not to enable maintenance mode for WorkSpaces"
+  type        = bool
+}
+
+variable "workspaces_creation_properties_user_enabled_as_local_administrator" {
+  description = "Whether or not to enable users as local administrators for WorkSpaces"
+  type        = bool
+}
 
