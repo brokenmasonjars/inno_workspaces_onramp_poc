@@ -37,10 +37,16 @@ variable "vpc_name" {
   type        = string
 }
 
-variable "vpc_availability_zones" {
-  description = "The availability zones for the VPC"
-  type        = list(string)
+variable "vpc_availability_zone_1" {
+  description = "The 1st availability zone for the VPC"
+  type        = string
 }
+
+variable "vpc_availability_zone_2" {
+  description = "The 2nd availability zone for the VPC"
+  type        = string
+}
+
 
 variable "vpc_cidr_block" {
   description = "CIDR block for VPC"
@@ -190,9 +196,6 @@ variable "ad_connector_customer_username" {
   type        = string
 }
 
-
-
-
 #################################################
 ########### Secrets Manager Variables ###########
 #################################################
@@ -208,7 +211,78 @@ variable "ad_connector_secrets_manager_secret_name" {
 }
 
 
-#####################################
-########## Security Groups ##########
-#####################################
+################################
+########## Workspaces ##########
+################################
+
+variable "workspaces_directory_id" {
+  description = "The ID of the WorkSpaces directory"
+  type        = string
+}
+
+###### Workspaces Self Service Permissions #####
+
+variable "workspaces_self_service_permissions_change_compute_type" {
+  description = "The self service permissions for changing compute type"
+  type        = bool
+}
+
+variable "workspaces_self_service_permissions_increase_volume_size" {
+  description = "The self service permissions for increasing volume size"
+  type        = bool
+}
+
+variable "workspaces_self_service_permissions_rebuild_workspace" {
+  description = "The self service permissions for rebuilding a workspace"
+  type        = bool
+}
+
+variable "workspaces_self_service_permissions_restart_workspace" {
+  description = "The self service permissions for restarting a workspace"
+  type        = bool
+}
+
+variable "workspaces_self_service_permissions_switch_running_mode" {
+  description = "The self service permissions for switching running mode"
+  type        = bool
+}
+
+##### Workspaces Access properties #####
+
+variable "workspaces_access_properties_device_type_android" {
+  description = "The device type for Android"
+  type        = string
+}
+
+variable "workspaces_access_properties_device_type_chromeos" {
+  description = "The device type for ChromeOS"
+  type        = string
+}
+
+variable "workspaces_access_properties_device_type_ios" {
+  description = "The device type for iOS"
+  type        = string
+}
+
+variable "workspaces_access_properties_device_type_linux" {
+  description = "The device type for Linux"
+  type        = string
+}
+
+variable "workspaces_access_properties_device_type_osx" {
+  description = "The device type for OSX"
+  type        = string
+}
+
+variable "workspaces_access_properties_device_type_web" {
+  description = "The device type for Web"
+  type        = string
+}
+
+variable "workspaces_access_properties_device_type_windows" {
+  description = "The device type for Windows"
+  type        = string
+}
+
+
 

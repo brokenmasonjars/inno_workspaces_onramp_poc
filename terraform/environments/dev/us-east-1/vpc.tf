@@ -8,7 +8,7 @@
 
 module "workspaces_vpc" {
   source             = "../../../modules/vpc"
-  availability_zones = var.vpc_availability_zones
+  availability_zones = [(var.vpc_availability_zone_1),(var.vpc_availability_zone_2)]
   expand_ephemeral_port_range = true
   flowlog_retention = var.flowlog_retention
   domain_name = var.domain_name
@@ -20,13 +20,13 @@ module "workspaces_vpc" {
       cidr   = var.vpc_cidr_block
       region = var.region
     }
-    us-east-1c = {
+    (var.vpc_availability_zone_1) = {
       cidr_public     = var.public_az_1_subnet_cidr_blocks
       cidr_private    = var.private_az_1_subnet_cidr_blocks
       cidr_workspaces = var.workspace_az_1_subnet_cidr_blocks
       cidr_data       = var.data_az_1_subnet_cidr_blocks
     }
-    us-east-1d = {
+    (var.vpc_availability_zone_2) = {
       cidr_public     = var.public_az_2_subnet_cidr_blocks
       cidr_private    = var.private_az_2_subnet_cidr_blocks
       cidr_workspaces = var.workspace_az_2_subnet_cidr_blocks
