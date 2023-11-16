@@ -42,38 +42,15 @@ module "workspaces_vpc" {
   }
 }
 
+resource "aws_vpc_endpoint" "ssm" {
+  vpc_id            = module.workspaces_vpc.id
+  service_name      = "com.amazonaws.us-east-1.ssm"
+  vpc_endpoint_type = "Interface"
 
+  security_group_ids = [
+    aws_security_group.vpc_endpoint_sg.id
+  ]
 
-# module "vpc" {
-#   source             = "../../../modules/vpc"
-#   availability_zones = var.vpc_availability_zones
-#   settings = {
-#     main = {
-#       name   = var.vpc_name
-#       cidr   = var.vpc_cidr_block
-#       region = var.region
-#     }
-#     us-east-1c = {
-#       cidr_public  = var.public_az_1_subnet_cidr_blocks
-#       cidr_private = var.private_az_1_subnet_cidr_blocks
-#       cidr_data    = var.data_az_1_subnet_cidr_blocks
-#     }
-#     us-east-1d = {
-#       cidr_public  = var.public_az_2_subnet_cidr_blocks
-#       cidr_private = var.private_az_2_subnet_cidr_blocks
-#       cidr_data    = var.data_az_2_subnet_cidr_blocks
-#     }
-    
-#     expand_ephemeral_port_range = true
-    
-#     flowlog_retention           = var.flowlog_retention
-#     domain_name                 = var.domain_name
-#     domain_name_servers         = var.domain_name_servers
+  private_dns_enabled = true
 
-#   }
-#   tags = {
-#     environment = var.environment_name
-#     owner       = var.owner
-#     managed-by  = "Terraform"
-#   }
-# }
+}

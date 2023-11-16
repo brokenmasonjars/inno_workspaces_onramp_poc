@@ -32,3 +32,24 @@ resource "aws_security_group" "fsx_sg" {
     to_port     = 0
   }
 }
+
+resource "aws_security_group" "vpc_endpoint_sg" {
+  description = "Security Group for VPC endpoints"
+  name        = "VPCEndpoint_SG"
+  tags        = { "Name" = "VPCEndpoint_SG" }
+  vpc_id      = module.workspaces_vpc.id
+  ingress {
+    cidr_blocks = [module.workspaces_vpc.cidr]
+    description = "Allow all traffic from within VPC"
+    from_port   = 0
+    protocol    = "-1"
+    to_port     = 0
+  }
+  egress {
+    cidr_blocks = ["0.0.0.0/0"]
+    description = "Allow all outbound traffic"
+    from_port   = 0
+    protocol    = "-1"
+    to_port     = 0
+  }
+}

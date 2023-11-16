@@ -2,7 +2,8 @@
 ########## Directory Services Resources ##########
 ##################################################
 
-#Managed Active Directory
+########## Managed Active Directory ##########
+##### Uncomment if customer is using Managed Active Directory #####
 
 # resource "aws_directory_service_directory" "workspaces_mad" {
 #   name        = var.mad_fqdn
