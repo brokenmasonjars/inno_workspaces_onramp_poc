@@ -79,3 +79,27 @@ resource "aws_security_group" "workspaces_sg" {
     to_port     = 0
   }
 }
+
+########## EC2 Utility Server Security Group ##########
+
+resource "aws_security_group" "ec2_utility_server_sg" {
+  description = "Security Group for the EC2 Utility Server"
+  name        = "Utility_Server_SG"
+  tags        = { "Name" = "Utility_Server_SG" }
+  vpc_id      = module.workspaces_vpc.id
+
+  ingress {
+    cidr_blocks = [module.workspaces_vpc.cidr]
+    description = "Allow All Traffic from within VPC"
+    from_port   = 0
+    protocol    = "-1"
+    to_port     = 0
+  }
+  egress {
+    cidr_blocks = ["0.0.0.0/0"]
+    description = "Allow all outbound traffic"
+    from_port   = 0
+    protocol    = "-1"
+    to_port     = 0
+  }
+}

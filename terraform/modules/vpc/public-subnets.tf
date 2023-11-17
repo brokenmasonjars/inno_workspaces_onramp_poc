@@ -82,7 +82,7 @@ resource "aws_network_acl_rule" "public_egress100" {
 
 resource "aws_eip" "nat_gw" {
   for_each = var.single_nat_gateway ? [var.availability_zones[0]] : toset(var.availability_zones)
-  vpc      = true
+  domain   = "vpc"
 }
 
 resource "aws_nat_gateway" "nat_gw" {

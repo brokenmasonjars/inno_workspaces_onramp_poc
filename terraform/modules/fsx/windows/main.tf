@@ -16,8 +16,6 @@ resource "aws_fsx_windows_file_system" "fsx" {
     username    = var.fsx_self_managed_active_directory_username
   }
 
-
-
   tags = merge(var.tags, { "Name" = var.name })
 }
 

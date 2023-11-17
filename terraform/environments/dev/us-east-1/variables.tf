@@ -343,3 +343,24 @@ variable "fsx_name" {
 #   description = "The aliases for FSx"
 #   type        = list(string)
 # }
+
+###################################
+########## EC2 Variables ##########
+###################################
+
+variable "ec2_key_name" {
+  description = "The key name for EC2"
+  type        = string
+}
+
+##### EC2 Utility Server #####
+
+variable "ec2_utility_server_instance_type" {
+  description = "The instance type for EC2"
+  type        = string
+}
+
+variable "ec2_utility_server_name"  {
+  description = "The name for EC2"
+  type        = string
+}
