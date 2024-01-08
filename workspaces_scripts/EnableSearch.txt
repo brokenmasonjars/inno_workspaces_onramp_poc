@@ -1,0 +1,3 @@
+sc config wsearch start=auto
+
+sc start wsearch
